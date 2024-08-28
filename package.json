@@ -1,0 +1,31 @@
+{
+  "name": "water-gas-consumption",
+  "version": "1.0.0",
+  "description": "serviço de leitura de imagens com a API do Google Gemini.",
+  "main": "index.js",
+  "author": "Fernando Hali",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev": "nodemon src/app.ts"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.17.1",
+    "axios": "^1.7.5",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.0",
+    "@types/uuid": "^10.0.0",
+    "nodemon": "^3.1.4",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.5.4"
+  }
+}
