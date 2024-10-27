@@ -1,19 +1,26 @@
-import axios from "axios";
+import axios from 'axios';
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = "https://api.google.dev/gemini/v1/vision";
+export class GeminiService {
+  static async getMeasureValueFromImage(base64Image: string): Promise<number> {
+    const apiKey = process.env.GEMINI_API_KEY;
+    const response = await axios.post(
+      'https://api.google.dev/gemini/v1/vision',
+      {
+        image: base64Image,
+        // Se necessário, adicione outros parâmetros aqui conforme o exemplo do repositório
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+        },
+      }
+    );
 
-export const getMeasureFromImage = async (base64Image: string) => {
-  try {
-    const response = await axios.post(GEMINI_API_URL, {
-      image: base64Image,
-      apiKey: GEMINI_API_KEY,
-    });
-
-    const { image_url, measure_value } = response.data;
-    return { image_url, measure_value };
-  } catch (error) {
-    console.error("Error calling Gemini API:", error);
-    throw new Error("Failed to extract measurement from image.");
+    // Ajuste conforme a resposta real da API
+    const measureValue = response.data.measure_value;
+    return measureValue;
   }
-};
+}
+
+export default GeminiService;
